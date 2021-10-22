@@ -14,8 +14,8 @@ export class API {
     }).then((resp) => resp.json());
   }
   static getTeam(team) {
-    // console.log(team);
-    return fetch(`http://127.0.0.1:8000/teams?team=${team}`, {
+    console.log(team, " IS SUPPOSE TO BE THE MATCH");
+    return fetch("http://127.0.0.1:8000/teams?" + new URLSearchParams(team), {
       method: "GET",
     }).then((resp) => resp.json());
   }

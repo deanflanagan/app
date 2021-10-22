@@ -15,8 +15,8 @@ function Fixtures() {
   }, []);
 
   const handleSelect = (e) => {
-    setProfile(e);
     // console.log(e);
+    setProfile(e);
   };
 
   return (

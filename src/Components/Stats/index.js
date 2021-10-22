@@ -16,7 +16,7 @@ function Stats() {
 
   useEffect(() => {
     if (stats) {
-      API.getTeam(stats.team).then((resp) => {
+      API.getTeam(stats).then((resp) => {
         console.log(resp);
       });
     }
