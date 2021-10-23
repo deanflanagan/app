@@ -3,11 +3,11 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from "react-bootstrap/Dropdown";
 // import testData from "./testFixtures";
-import ProfileContext from "../../profileContext";
+import MatchContext from "../../matchContext";
 import { API } from "../Utils/api";
 
 function Fixtures() {
-  const { setProfile } = useContext(ProfileContext);
+  const { match, setMatch } = useContext(MatchContext);
   const [upcoming, setUpcoming] = useState();
 
   useEffect(() => {
@@ -15,8 +15,11 @@ function Fixtures() {
   }, []);
 
   const handleSelect = (e) => {
-    // console.log(e);
-    setProfile(e);
+    console.log(
+      "React stuff for e at fixtures, should be whole object not just match id ",
+      e
+    );
+    setMatch(e);
   };
 
   return (
@@ -37,10 +40,6 @@ function Fixtures() {
       ) : (
         <React.Fragment></React.Fragment>
       )}
-
-      {/* <Dropdown.Divider />
-
-      <Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
     </DropdownButton>
   );
 }

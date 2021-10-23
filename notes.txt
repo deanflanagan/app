@@ -1,0 +1,8 @@
+1. First endpoint is getFixtures for upcoming games. That component sets the match context
+2. After selecting match from dropdown, getStats receives the match context and in django, gets the params and filters appropriately
+3. Next, useEffect will trigger a call to populate the divs for home and away with those stats
+
+10/23/2021
+
+- Today work on output for each match. You have the table with stats, need to make useEffect first to go after the stats made
+- Got the output for the stats but need to have the context keep the whole match, now its just the id

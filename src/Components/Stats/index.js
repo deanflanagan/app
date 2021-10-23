@@ -1,24 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
-import ProfileContext from "../../profileContext";
+import MatchContext from "../../matchContext";
 import { API } from "../Utils/api";
 import "./styles.css";
 
 function Stats() {
-  const profile = useContext(ProfileContext);
+  const match = useContext(MatchContext);
   const [stats, setStats] = useState();
-  const [teamStats, setTeamStats] = useState();
+  const [nextLast, setNextLast] = useState();
 
   useEffect(() => {
-    API.getStats(profile).then((resp) => {
-      resp.map((match) => setStats(match));
+    API.getStats(match).then((resp) => {
+      let arr = [];
+      // this returns an array of all the odds rows recorded for the unplayed games. Should adjust endpoint to get latest
+      resp.map((matches) => arr.push(matches));
+      setStats(arr);
     });
   }, []);
 
   useEffect(() => {
+    // this will send back the current and last game for each team
     if (stats) {
-      API.getTeam(stats).then((resp) => {
-        console.log(resp);
+      API.getNextLast(match).then((resp) => {
+        console.log("   ***   are the resp", resp);
+        console.log("   ***   are the stats", stats);
+        setNextLast(resp);
       });
+      // make an api call here to get the team last game from each team
     }
   }, [stats]);
 
@@ -43,7 +50,9 @@ function Stats() {
           </div>
         ) : null}
       </div>
-      <div className="stats-border stats-team-left">jjjjj</div>
+      <div className="stats-border stats-team-left">
+        Home team +/- recent total + avg {}
+      </div>
       <div className="stats-border stats-opposition-right">jjjjj</div>
       <div className="stats-border stats-middle">jjjjj</div>
     </div>

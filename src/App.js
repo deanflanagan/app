@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-
 import "./App.css";
 import Fixtures from "./Components/Fixtures/index";
 import StatsContainer from "./Components/Stats/index";
-import ProfileContext from "./profileContext";
+import MatchContext from "./matchContext";
 
 function App() {
-  const [profile, setProfile] = useState(undefined);
+  const [match, setMatch] = useState(undefined);
 
   return (
     <div className="App">
@@ -14,13 +13,13 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <ProfileContext.Provider value={{ profile, setProfile }}>
+        <MatchContext.Provider value={{ match, setMatch }}>
           <div class="wrapper">
             <div class="one ">
               <Fixtures />
             </div>
             <div class="two boxes">
-              {profile ? (
+              {match ? (
                 <StatsContainer />
               ) : (
                 <React.Fragment>Theres no match selected </React.Fragment>
@@ -32,7 +31,7 @@ function App() {
             <div class="five">Five</div>
             <div class="six">Six</div> */}
           </div>
-        </ProfileContext.Provider>
+        </MatchContext.Provider>
       </header>
     </div>
   );
