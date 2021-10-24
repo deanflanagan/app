@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import MatchContext from "../../matchContext";
+import TeamCard from "./teamCard";
 import { API } from "../Utils/api";
 import "./styles.css";
 
@@ -7,6 +8,8 @@ function Stats() {
   const match = useContext(MatchContext);
   const [stats, setStats] = useState();
   const [nextLast, setNextLast] = useState();
+  const [matchTime, setMatchTime] = useState();
+  // let headerDate = "";
 
   useEffect(() => {
     API.getStats(match).then((resp) => {
@@ -23,35 +26,34 @@ function Stats() {
       API.getNextLast(match).then((resp) => {
         console.log("   ***   are the resp", resp);
         console.log("   ***   are the stats", stats);
+        let a = new Date(resp[2].start_time);
+
+        setMatchTime(a.toLocaleString());
         setNextLast(resp);
+
+        // headerDate = new Date(nextLast[2].start_time);
       });
       // make an api call here to get the team last game from each team
     }
   }, [stats]);
 
+  // let date = new Date();
+
   return (
     <div className="stats-wrapper">
       <div />
       <div className="stats-border stats-header">
-        {stats ? (
+        {/* here you have to design the layout */}
+        {nextLast ? (
           <div className="stats-header-text">
-            {stats.team} vs. {stats.opposition}
-            {Math.floor((Date.parse(stats.start_time) - Date.now()) / 3600000) >
-            0 ? (
-              <p>
-                In{" "}
-                {Math.floor(
-                  (Date.parse(stats.start_time) - Date.now()) / 3600000
-                )}{" "}
-                hours
-              </p>
-            ) : null}
-            {}
+            {nextLast[2].team} vs. {nextLast[2].opposition}
+            <br />
+            Start time is {matchTime}
           </div>
         ) : null}
       </div>
       <div className="stats-border stats-team-left">
-        Home team +/- recent total + avg {}
+        {nextLast ? <TeamCard data={stats[0]}></TeamCard> : null}
       </div>
       <div className="stats-border stats-opposition-right">jjjjj</div>
       <div className="stats-border stats-middle">jjjjj</div>
