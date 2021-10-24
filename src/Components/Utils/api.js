@@ -22,11 +22,4 @@ export class API {
       method: "GET",
     }).then((resp) => resp.json());
   }
-
-  // static populatePregame(team) {
-  //   console.log(team, " IS SUPPOSE TO BE THE MATCH IDENTIFIER FOR PREGAME");
-  //   // return fetch("http://127.0.0.1:8000/teams?" + new URLSearchParams(team), {
-  //   //   method: "GET",
-  //   // }).then((resp) => resp.json());
-  // }
 }

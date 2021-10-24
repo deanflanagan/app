@@ -27,8 +27,6 @@ function Stats() {
     // this will send back the current and last game for each team
     if (stats) {
       API.getNextLast(match).then((resp) => {
-        // console.log("   ***   are the resp", resp);
-        // console.log("   ***   are the stats", stats);
         let a = new Date(resp[2].start_time);
 
         setMatchTime(a.toLocaleString());
@@ -40,16 +38,12 @@ function Stats() {
   useEffect(() => {
     if (nextLast) {
       API.getPredictions(match).then((resp) => {
-        console.log(nextLast[2]);
         resp.push({
           ou: nextLast[2]["ou"],
           ah: nextLast[2]["hdp"],
         });
         setPredictions(resp);
-        // console.log()
       });
-      console.log("   ***   match context is", nextLast[2]);
-      console.log("    *** market array is", nextLast[2]["ou"]);
     }
   }, [nextLast]);
 
