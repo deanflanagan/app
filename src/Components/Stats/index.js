@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import MatchContext from "../../matchContext";
 import TeamCard from "./teamCard";
+import MiddleCard from "./middleCard";
+import OppCard from "./oppCard";
 import { API } from "../Utils/api";
 import "./styles.css";
 
@@ -9,6 +11,7 @@ function Stats() {
   const [stats, setStats] = useState();
   const [nextLast, setNextLast] = useState();
   const [matchTime, setMatchTime] = useState();
+  const [predictions, setPredictions] = useState();
   // let headerDate = "";
 
   useEffect(() => {
@@ -24,18 +27,31 @@ function Stats() {
     // this will send back the current and last game for each team
     if (stats) {
       API.getNextLast(match).then((resp) => {
-        console.log("   ***   are the resp", resp);
-        console.log("   ***   are the stats", stats);
+        // console.log("   ***   are the resp", resp);
+        // console.log("   ***   are the stats", stats);
         let a = new Date(resp[2].start_time);
 
         setMatchTime(a.toLocaleString());
         setNextLast(resp);
-
-        // headerDate = new Date(nextLast[2].start_time);
       });
-      // make an api call here to get the team last game from each team
     }
   }, [stats]);
+
+  useEffect(() => {
+    if (nextLast) {
+      API.getPredictions(match).then((resp) => {
+        console.log(nextLast[2]);
+        resp.push({
+          ou: nextLast[2]["ou"],
+          ah: nextLast[2]["hdp"],
+        });
+        setPredictions(resp);
+        // console.log()
+      });
+      console.log("   ***   match context is", nextLast[2]);
+      console.log("    *** market array is", nextLast[2]["ou"]);
+    }
+  }, [nextLast]);
 
   // let date = new Date();
 
@@ -43,7 +59,6 @@ function Stats() {
     <div className="stats-wrapper">
       <div />
       <div className="stats-border stats-header">
-        {/* here you have to design the layout */}
         {nextLast ? (
           <div className="stats-header-text">
             {nextLast[2].team} vs. {nextLast[2].opposition}
@@ -55,8 +70,12 @@ function Stats() {
       <div className="stats-border stats-team-left">
         {nextLast ? <TeamCard data={stats[0]}></TeamCard> : null}
       </div>
-      <div className="stats-border stats-opposition-right">jjjjj</div>
-      <div className="stats-border stats-middle">jjjjj</div>
+      <div className="stats-border stats-opposition-right">
+        {nextLast ? <OppCard data={stats[1]}></OppCard> : null}
+      </div>
+      <div className="stats-border stats-middle">
+        {predictions ? <MiddleCard data={predictions}></MiddleCard> : null}
+      </div>
     </div>
   );
 }

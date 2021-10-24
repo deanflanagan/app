@@ -1,18 +1,18 @@
 import React from "react";
 
-function TeamCard(data) {
+function OppCard(data) {
   const arr = [
-    "home_delta_points_recent_agg",
-    "home_delta_points_recent_avg",
-    "home_delta_points_season_agg",
-    "home_delta_points_season_avg",
+    "away_delta_points_recent_agg",
+    "away_delta_points_recent_avg",
+    "away_delta_points_season_agg",
+    "away_delta_points_season_avg",
     "role",
     "total_delta_points_recent_avg",
     "total_delta_points_recent_sum",
     "total_delta_points_season_avg",
     "total_delta_points_season_sum",
-    "home_recent_pl",
-    "home_season_pl",
+    "away_recent_pl",
+    "away_season_pl",
     "total_recent_pl",
     "total_season_pl",
   ];
@@ -27,8 +27,8 @@ function TeamCard(data) {
   return (
     <React.Fragment>
       <div>
-        <table id="team-data-home">
-          <caption align="top">Home team at Home</caption>
+        <table id="team-data-away">
+          <caption align="top">Away team at Away</caption>
           <tr>
             <th scope="col">Metric</th>
             <th scope="col">Sum</th>
@@ -37,19 +37,19 @@ function TeamCard(data) {
           </tr>
           <tr>
             <th scope="row">Recent +\- pts</th>
-            <td>{data.data["home_delta_points_recent_agg"]}</td>
-            <td>{data.data["home_delta_points_recent_avg"]}</td>
-            <td>{data.data["home_recent_pl"]}</td>
+            <td>{data.data["away_delta_points_recent_agg"]}</td>
+            <td>{data.data["away_delta_points_recent_avg"]}</td>
+            <td>{data.data["away_recent_pl"]}</td>
           </tr>
           <tr>
             <th scope="row">Season +\- pts</th>
-            <td>{data.data["home_delta_points_season_agg"]}</td>
-            <td>{data.data["home_delta_points_season_avg"]}</td>
-            <td>{data.data["home_season_pl"]}</td>
+            <td>{data.data["away_delta_points_season_agg"]}</td>
+            <td>{data.data["away_delta_points_season_avg"]}</td>
+            <td>{data.data["away_season_pl"]}</td>
           </tr>
         </table>
         <table id="team-data-overall">
-          <caption align="top">Home team all venues</caption>
+          <caption align="top">Away team all venues</caption>
           <tr>
             <th scope="col">Metric</th>
             <th scope="col">Sum</th>
@@ -59,14 +59,14 @@ function TeamCard(data) {
 
           <tr>
             <th scope="row">Recent +\- pts</th>
-            <td>{data.data["total_delta_points_recent_sum"]}</td>
             <td>{data.data["total_delta_points_recent_avg"]}</td>
+            <td>{data.data["total_delta_points_recent_sum"]}</td>
             <td>{data.data["total_recent_pl"]}</td>
           </tr>
           <tr>
             <th scope="row">Season +\- pts</th>
-            <td>{data.data["total_delta_points_season_sum"]}</td>
             <td>{data.data["total_delta_points_season_avg"]}</td>
+            <td>{data.data["total_delta_points_season_sum"]}</td>
             <td>{data.data["total_season_pl"]}</td>
           </tr>
         </table>
@@ -75,4 +75,4 @@ function TeamCard(data) {
   );
 }
 
-export default TeamCard;
+export default OppCard;
