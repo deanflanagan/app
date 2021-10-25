@@ -12,7 +12,11 @@
 }
 .stats-middle {
   grid-column: 2/3;
-  grid-row: 2/8;
+  grid-row: 2/4;
+}
+.stats-middle-bottom {
+  grid-column: 2/3;
+  grid-row: 4/8;
 }
 .stats-opposition-right {
   grid-column: 3/4;

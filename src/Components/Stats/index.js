@@ -3,6 +3,7 @@ import MatchContext from "../../matchContext";
 import TeamCard from "./teamCard";
 import MiddleCard from "./middleCard";
 import OppCard from "./oppCard";
+import SystemCard from "./systemsCard";
 import { API } from "../Utils/api";
 import "./styles.css";
 
@@ -12,6 +13,7 @@ function Stats() {
   const [nextLast, setNextLast] = useState();
   const [matchTime, setMatchTime] = useState();
   const [predictions, setPredictions] = useState();
+  const [systems, setSystems] = useState();
   // let headerDate = "";
 
   useEffect(() => {
@@ -47,6 +49,15 @@ function Stats() {
     }
   }, [nextLast]);
 
+  useEffect(() => {
+    if (predictions) {
+      API.getSystems(match).then((resp) => {
+        console.log(resp.pop());
+        setSystems(resp.pop());
+      });
+    }
+  }, [predictions]);
+
   // let date = new Date();
 
   return (
@@ -69,6 +80,9 @@ function Stats() {
       </div>
       <div className="stats-border stats-middle">
         {predictions ? <MiddleCard data={predictions}></MiddleCard> : null}
+      </div>
+      <div className="stats-border stats-middle-bottom">
+        {systems ? <SystemCard data={systems}></SystemCard> : null}
       </div>
     </div>
   );
