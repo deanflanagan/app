@@ -12,6 +12,7 @@ function Stats() {
   const [stats, setStats] = useState();
   const [nextLast, setNextLast] = useState();
   const [matchTime, setMatchTime] = useState();
+
   const [predictions, setPredictions] = useState();
   const [systems, setSystems] = useState();
   // let headerDate = "";
@@ -29,9 +30,12 @@ function Stats() {
     // this will send back the current and last game for each team
     if (stats) {
       API.getNextLast(match).then((resp) => {
+        // console.log(resp);
         let a = new Date(resp[2].start_time);
+        console.log(resp[2].ft1);
+        console.log(resp[0].ft1);
 
-        setMatchTime(a.toLocaleString());
+        setMatchTime([a.toLocaleString(), resp[2].ft1, resp[2].ft2]);
         setNextLast(resp);
       });
     }
@@ -52,7 +56,6 @@ function Stats() {
   useEffect(() => {
     if (predictions) {
       API.getSystems(match).then((resp) => {
-        console.log(resp.pop());
         setSystems(resp.pop());
       });
     }
@@ -68,7 +71,9 @@ function Stats() {
           <div className="stats-header-text">
             {nextLast[2].team} vs. {nextLast[2].opposition}
             <br />
-            Start time is {matchTime}
+            Start time is {matchTime[0]}
+            <br />
+            {matchTime[1]} - {matchTime[2]}
           </div>
         ) : null}
       </div>

@@ -13,7 +13,6 @@ function SystemCard(data) {
     "ou_system_avg",
     "ou_system_pl",
   ];
-  console.log("   ***   data is", data);
 
   // console.log("   *** Card data is ***", data.data);
   //   Object.keys(data.data).map((key) => {
@@ -26,53 +25,38 @@ function SystemCard(data) {
     <React.Fragment>
       <div>
         <table id="team-data-away">
-          <caption align="top">Back all home AH</caption>
+          <caption align="top">Blind Handicaps this League</caption>
           <tr>
             <th scope="col"></th>
             <th scope="col">PL</th>
             <th scope="col">Mean</th>
           </tr>
           <tr>
-            <th scope="row"></th>
+            <th scope="row">Home</th>
             <td>{data.data["blind_team_ah_pl"]}</td>
             <td>{data.data["blind_team_ah_mean"]}%</td>
           </tr>
-        </table>
-        <table id="team-data-away">
-          <caption align="top">Back all away AH</caption>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">PL</th>
-            <th scope="col">Mean</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
+            <th scope="row">Away</th>
             <td>{data.data["blind_opposition_ah_pl"]}</td>
             <td>{data.data["blind_opposition_ah_mean"]}%</td>
           </tr>
         </table>
+
         <table id="team-data-away">
-          <caption align="top">Back all unders</caption>
+          <caption align="top">Blind Over/under</caption>
           <tr>
             <th scope="col"></th>
             <th scope="col">PL</th>
             <th scope="col">Mean</th>
           </tr>
           <tr>
-            <th scope="row"></th>
+            <th scope="row">Under</th>
             <td>{data.data["blind_under_pl"]}</td>
             <td>{data.data["blind_under_mean"]}%</td>
           </tr>
-        </table>
-        <table id="team-data-away">
-          <caption align="top">Back all overs</caption>
           <tr>
-            <th scope="col"></th>
-            <th scope="col">PL</th>
-            <th scope="col">Mean</th>
-          </tr>
-          <tr>
-            <th scope="row"></th>
+            <th scope="row">Over</th>
             <td>{data.data["blind_over_pl"]}</td>
             <td>{data.data["blind_over_mean"]}%</td>
           </tr>
@@ -85,11 +69,42 @@ function SystemCard(data) {
             <th scope="col">Mean</th>
           </tr>
           <tr>
+            <th scope="row">All games</th>
+            <td>{data.data["ou_system_pl"]}</td>
+            <td> {data.data["ou_system_avg"]}%</td>
+          </tr>
+          {/* <tr>
+            <th scope="row">Over</th>
+            <td>{data.data["blind_over_pl"]}</td>
+            <td>{data.data["blind_over_mean"]}%</td>
+          </tr> */}
+        </table>
+        {/* <table id="team-data-away">
+          <caption align="top">Back all overs</caption>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">PL</th>
+            <th scope="col">Mean</th>
+          </tr>
+          <tr>
+            <th scope="row"></th>
+            <td>{data.data["blind_over_pl"]}</td>
+            <td>{data.data["blind_over_mean"]}%</td>
+          </tr>
+        </table> */}
+        {/* <table id="team-data-away">
+          <caption align="top">OU System</caption>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">PL</th>
+            <th scope="col">Mean</th>
+          </tr>
+          <tr>
             <th scope="row"></th>
             <td>{data.data["ou_system_pl"]}</td>
             <td>{data.data["ou_system_avg"]}%</td>
           </tr>
-        </table>
+        </table> */}
       </div>
     </React.Fragment>
   );
