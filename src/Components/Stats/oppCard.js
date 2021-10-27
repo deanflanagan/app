@@ -59,14 +59,14 @@ function OppCard(data) {
 
           <tr>
             <th scope="row">Recent +\- pts</th>
-            <td>{data.data["total_delta_points_recent_avg"]}</td>
             <td>{data.data["total_delta_points_recent_sum"]}</td>
+            <td>{data.data["total_delta_points_recent_avg"]}</td>
             <td>{data.data["total_recent_pl"]}</td>
           </tr>
           <tr>
             <th scope="row">Season +\- pts</th>
-            <td>{data.data["total_delta_points_season_avg"]}</td>
             <td>{data.data["total_delta_points_season_sum"]}</td>
+            <td>{data.data["total_delta_points_season_avg"]}</td>
             <td>{data.data["total_season_pl"]}</td>
           </tr>
         </table>
