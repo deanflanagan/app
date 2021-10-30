@@ -12,6 +12,8 @@ function SystemCard(data) {
     "blind_opposition_ah_pl",
     "ou_system_avg",
     "ou_system_pl",
+    "ah_system_avg",
+    "ah_system_pl",
   ];
 
   // console.log("   *** Card data is ***", data.data);
@@ -72,6 +74,11 @@ function SystemCard(data) {
             <th scope="row">All games</th>
             <td>{data.data["ou_system_pl"]}</td>
             <td> {data.data["ou_system_avg"]}%</td>
+          </tr>
+          <tr>
+            <th scope="row">All games</th>
+            <td>{data.data["ah_system_pl"]}</td>
+            <td> {data.data["ah_system_avg"]}%</td>
           </tr>
           {/* <tr>
             <th scope="row">Over</th>

@@ -32,8 +32,6 @@ function Stats() {
       API.getNextLast(match).then((resp) => {
         // console.log(resp);
         let a = new Date(resp[2].start_time);
-        console.log(resp[2].ft1);
-        console.log(resp[0].ft1);
 
         setMatchTime([a.toLocaleString(), resp[2].ft1, resp[2].ft2]);
         setNextLast(resp);
