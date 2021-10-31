@@ -10,19 +10,16 @@ function SystemCard(data) {
     "blind_team_ah_mean",
     "blind_opposition_ah_mean",
     "blind_opposition_ah_pl",
-    "ou_system_avg",
-    "ou_system_pl",
-    "ah_system_avg",
-    "ah_system_pl",
+    "over_system_avg ",
+    "over_system_pl ",
+    "under_system_avg",
+    "under_system_pl",
+    "home_system_avg",
+    "home_system_pl",
+    "away_system_avg",
+    "away_system_pl",
   ];
 
-  // console.log("   *** Card data is ***", data.data);
-  //   Object.keys(data.data).map((key) => {
-  //     if (arr.indexOf(key) === -1) {
-  //       delete data.data[key];
-  //     }
-  //     // console.log(data.data);
-  //   });
   return (
     <React.Fragment>
       <div>
@@ -71,47 +68,34 @@ function SystemCard(data) {
             <th scope="col">Mean</th>
           </tr>
           <tr>
-            <th scope="row">All games</th>
-            <td>{data.data["ou_system_pl"]}</td>
-            <td> {data.data["ou_system_avg"]}%</td>
+            <th scope="row">Overs</th>
+            <td>{data.data["over_system_pl"]}</td>
+            <td> {data.data["over_system_avg"]}%</td>
           </tr>
           <tr>
-            <th scope="row">All games</th>
-            <td>{data.data["ah_system_pl"]}</td>
-            <td> {data.data["ah_system_avg"]}%</td>
+            <th scope="row">Unders</th>
+            <td>{data.data["under_system_pl"]}</td>
+            <td> {data.data["under_system_avg"]}%</td>
           </tr>
-          {/* <tr>
-            <th scope="row">Over</th>
-            <td>{data.data["blind_over_pl"]}</td>
-            <td>{data.data["blind_over_mean"]}%</td>
-          </tr> */}
         </table>
-        {/* <table id="team-data-away">
-          <caption align="top">Back all overs</caption>
+        <table id="team-data-away">
+          <caption align="top">AH System</caption>
           <tr>
             <th scope="col"></th>
             <th scope="col">PL</th>
             <th scope="col">Mean</th>
           </tr>
           <tr>
-            <th scope="row"></th>
-            <td>{data.data["blind_over_pl"]}</td>
-            <td>{data.data["blind_over_mean"]}%</td>
-          </tr>
-        </table> */}
-        {/* <table id="team-data-away">
-          <caption align="top">OU System</caption>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">PL</th>
-            <th scope="col">Mean</th>
+            <th scope="row">Home</th>
+            <td>{data.data["home_system_pl"]}</td>
+            <td> {data.data["home_system_avg"]}%</td>
           </tr>
           <tr>
-            <th scope="row"></th>
-            <td>{data.data["ou_system_pl"]}</td>
-            <td>{data.data["ou_system_avg"]}%</td>
+            <th scope="row">Away</th>
+            <td>{data.data["away_system_pl"]}</td>
+            <td> {data.data["away_system_avg"]}%</td>
           </tr>
-        </table> */}
+        </table>
       </div>
     </React.Fragment>
   );
